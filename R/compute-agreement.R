@@ -8,6 +8,8 @@
 #' @param svy_var The opinion variable to look at
 #' @param policy_var The vote variable to look at
 #'
+#'@export
+#'
 dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response", policy_var = "vote") {
 
   if (!chamber %in% c("H", "S", "Policy")) stop("Must be H or S")

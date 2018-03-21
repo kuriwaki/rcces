@@ -1,4 +1,9 @@
-## utlity functions -------
+
+#' Parse no-space labels to cleaner words for graphing
+#'
+#' @param char text to parse
+#'
+#' @export
 my.parse <- function(char, drop_year = TRUE) {
   pattern <- "([a-z])([A-X2])"
   replacement <- "\\1 \\2"
@@ -11,8 +16,15 @@ my.parse <- function(char, drop_year = TRUE) {
   return(char)
 }
 
-# comma formatting
-cmfmtW <- function(x, file, round = NA, pp = F) {
+#' comma formatting to char
+#' @rdname cmfmt
+#' @param x numeric vector
+#' @param file path to write to
+#' @param round round by
+#' @param pp if true then multiply by one hundred
+#' @export
+#'
+cmfmtW <- function(x, file, round = NA, pp = FALSE) {
   if (pp) x <- round(x*100, 1)
   if (!is.na(round)) x <- round(x, round)
 
@@ -20,7 +32,15 @@ cmfmtW <- function(x, file, round = NA, pp = F) {
   writeLines(x, file)
 }
 
-cmfmt <- function(x, file,  pp = F) {
+#' @rdname cmfmt
+#' @param x numeric vector
+#' @param pp if true then multiply by one hundred
+#' @export
+#'
+#' @examples
+#' cmfmt(c(123, 1234, 123456789))
+#'
+cmfmt <- function(x, file,  pp = FALSE) {
   if (pp) x <- round(x*100, 1)
   x <- format(x, big.mark = ",")
   return(x)

@@ -1,4 +1,14 @@
 # function to compute proportion Yes on  any constituency
+
+#' Proportion Yes by question
+#'
+#' Splits by qID, or a question asked in a given year. Does not aggregate across years
+#'
+#' @rdname split
+#'
+#' @param tbl The dataset with the columns \code{cong}, \code{question}
+#' @param ... variables to group on in addition to year and question, tidyeval variables
+#' @export
 question_split <- function(tbl, ...) {
 
   var <- quos(...)
@@ -26,7 +36,18 @@ question_split <- function(tbl, ...) {
 }
 
 
-# by issue, rather than by individiual question. similar to question_split
+#' Proportion Yes by topic
+#'
+#' Unlike \code{issue_split}, this question will aggregate across years if the same question is asked.
+#'
+#' @rdname split
+#'
+#' @param tbl The dataset with the columns \code{cong}, \code{question}
+#' @param ... variables to group on in addition to year and question, tidyeval variables
+#'
+#' @export
+#'
+#'
 issue_split <- function(tbl, ...) {
 
   var <- quos(...)

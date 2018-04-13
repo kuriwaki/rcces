@@ -63,7 +63,7 @@ clabs.graph <- c("109\nBush\nHastert\nFrist",
                  "114\nObama\nBoehner-Ryan\nMcConnell")
 
 
-congEra <- data_frame(cong = 109:114,
+congEra <- tibble::data_frame(cong = 109:114,
                       name = clabs.graph,
                       start = c(2006.0, 2006.2, 2008.2, 2010.2, 2012.2, 2014.2),
                       end   = c(2006.2, 2008.2, 2010.2, 2012.2, 2014.2, 2016.2),

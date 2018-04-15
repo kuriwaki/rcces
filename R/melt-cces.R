@@ -1,5 +1,9 @@
-# melt wide cces (raw versions) to correct var names
-# make common function
+#' melt wide cces (raw versions) to correct var names
+#'
+#' @param tbl CCES dataset
+#' @param q_expr regex that selects questions
+#' @export
+#'
 melt_cces <- function(tbl, q_expr){
 
   # drop unnecessary columns and manipulate

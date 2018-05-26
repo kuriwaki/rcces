@@ -1,8 +1,10 @@
 Package: rcces
 Version: 0.0.1
 Title: Tools to Melt, Combine, Clean, and Standardize CCES Questions
-Description: What the package does (one paragraph).
 Authors@R: person("Shiro", "Kuriwaki", email = "kuriwaki@g.harvard.edu", role = c("aut", "cre"))
+Description: Utility functions for analyzing and reshaping CCES dta files
+Depends: 
+  tidyverse
 License: What license it uses
 Encoding: UTF-8
 LazyData: true

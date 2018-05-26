@@ -1,8 +1,8 @@
-
 #' Recreate Stata's varaiable table
 #'
 #' @param dta output from \env{read_dta}
 #' @param string string to search and filter, optional
+#' @param name Name of the variable for the column of original stata variables
 #'
 #' @export
 #' @examples
@@ -13,7 +13,10 @@
 #'
 #' vartab(df)
 #' vartab(df, "identity")
-vartab <- function(dta, string = NULL) {
+vartab <- function(dta, string = NULL, name = alias) {
+  library(tidyverse)
+  namevar <- enquo(name)
+  namevar <- quo_name(namevar)
 
   # Get the label from variable alias
   get_label <- function(name, df = dta) {
@@ -24,15 +27,19 @@ vartab <- function(dta, string = NULL) {
 
   # vartable
   vt <- tibble(name = names(dta),
-               label = map_chr(names(dta), get_label)
-  )
+                       label = map_chr(names(dta), get_label)
+  ) %>%
+    dplyr::rename(!!namevar := name)
 
   if (is.null(string)) return(vt)
 
   # filter search if provided a string
   if (!is.null(string)) {
     vt %>%
-      filter(str_detect(name, regex(string, ignore_case = TRUE)) |
+      filter(str_detect(!!name, regex(string, ignore_case = TRUE)) |
                str_detect(label, regex(string, ignore_case = TRUE)))
   }
 }
+
+
+

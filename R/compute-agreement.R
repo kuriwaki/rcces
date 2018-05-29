@@ -43,3 +43,51 @@ dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
 }
 
 
+
+#' simpler version of dyad agreement, intended for long form where office is set
+#'
+#' @param data dataset
+#' @param var1 first variable of Y, N, DK
+#'
+#' @export
+yes_no_agrmt <- function(var1, var2, data) {
+  var1 <- enquo(var1)
+  var2 <- enquo(var2)
+
+  data %>%
+    mutate(out = case_when(
+      !!var1 == "Y" & !!var2 == "Y" ~ 1,
+      !!var1 == "N" & !!var2 == "N" ~ 1,
+      !!var1 == "Y" & !!var2 == "N" ~ -1,
+      !!var1 == "N" & !!var2 == "Y" ~ -1,
+      !!var1 == "DK" | !!var2 == "DK" ~ 0,
+      TRUE ~ 0
+    )) %>%
+    mutate(out = replace(out, is.na(!!var1) | is.na(!!var2), NA)) %>%
+    pull(out)
+}
+
+#' simpler version of dyad agreement, intended for long form where office is set
+#'
+#' @param data dataset
+#' @param var1 first variable of Y, N, DK, or D,R
+#'
+#' @export
+#'
+code_threeway <- function(var1, var2, data) {
+  var1 <- enquo(var1)
+  var2 <- enquo(var2)
+
+  data %>%
+    mutate(out = case_when(
+      ((var1 %in% c("D", "R") & var2 %in% c("D", "R")) |
+        (var1 %in% c("Y", "N") & var2 %in% c("Y", "N"))) &  !!var1 == !!var2 ~ 1,
+      ((var1 %in% c("D", "R") & var2 %in% c("D", "R")) |
+         (var1 %in% c("Y", "N") & var2 %in% c("Y", "N"))) &  !!var1 != !!var2 ~ -1,
+      TRUE ~ 0
+    )) %>%
+    mutate(out = replace(out, var1 %in% c("DK", "I"), 0)) %>%
+    mutate(out = replace(out, is.na(!!var1) | is.na(!!var2), NA)) %>%
+    pull(out)
+}
+

@@ -74,19 +74,30 @@ yes_no_agrmt <- function(var1, var2, data) {
 #'
 #' @export
 #'
-code_threeway <- function(var1, var2, data) {
+#' @examples
+#'df <- tibble(pid_self =   c("D", "R", "I", "D"),
+#'              pid_actl =   c("R", "R", "R", "D"),
+#'              issue_self = c("Y", "N", "DK", "N"),
+#'              issue_actl = c("N", "N", "N", "Y"))
+#'
+#' code_threeway(df, pid_self, pid_actl)
+#' code_threeway(df, issue_self, issue_actl)
+#'
+#' code_threeway()
+#'
+code_threeway <- function(data, var1, var2) {
   var1 <- enquo(var1)
   var2 <- enquo(var2)
 
   data %>%
     mutate(out = case_when(
-      ((var1 %in% c("D", "R") & var2 %in% c("D", "R")) |
-        (var1 %in% c("Y", "N") & var2 %in% c("Y", "N"))) &  !!var1 == !!var2 ~ 1,
-      ((var1 %in% c("D", "R") & var2 %in% c("D", "R")) |
-         (var1 %in% c("Y", "N") & var2 %in% c("Y", "N"))) &  !!var1 != !!var2 ~ -1,
+      ((!!var1 %in% c("D", "R") & !!var2 %in% c("D", "R")) |
+        (!!var1 %in% c("Y", "N") & !!var2 %in% c("Y", "N"))) &  !!var1 == !!var2 ~ 1,
+      ((!!var1 %in% c("D", "R") & !!var2 %in% c("D", "R")) |
+         (!!var1 %in% c("Y", "N") & !!var2 %in% c("Y", "N"))) &  !!var1 != !!var2 ~ -1,
       TRUE ~ 0
     )) %>%
-    mutate(out = replace(out, var1 %in% c("DK", "I"), 0)) %>%
+    mutate(out = replace(out, !!var1 %in% c("DK", "I"), 0)) %>%
     mutate(out = replace(out, is.na(!!var1) | is.na(!!var2), NA)) %>%
     pull(out)
 }

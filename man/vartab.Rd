@@ -2,7 +2,7 @@
 % Please edit documentation in R/read-stata.R
 \name{vartab}
 \alias{vartab}
-\title{Recreate Stata's varaiable table}
+\title{Recreate Stata's variable table}
 \usage{
 vartab(dta, string = NULL, name = alias)
 }
@@ -14,7 +14,7 @@ vartab(dta, string = NULL, name = alias)
 \item{name}{Name of the variable for the column of original stata variables}
 }
 \description{
-Recreate Stata's varaiable table
+Recreate Stata's variable table
 }
 \examples{
 # example data (what a read_dta tbl would look like)

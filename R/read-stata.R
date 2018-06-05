@@ -1,4 +1,5 @@
-#' Recreate Stata's varaiable table
+
+#' Recreate Stata's variable table
 #'
 #' @param dta output from \env{read_dta}
 #' @param string string to search and filter, optional
@@ -14,9 +15,8 @@
 #' vartab(df)
 #' vartab(df, "identity")
 vartab <- function(dta, string = NULL, name = alias) {
-  library(tidyverse)
-  namevar <- enquo(name)
-  namevar <- quo_name(namevar)
+  name <- enquo(name)
+  namevar <- quo_name(name)
 
   # Get the label from variable alias
   get_label <- function(name, df = dta) {
@@ -25,11 +25,11 @@ vartab <- function(dta, string = NULL, name = alias) {
     if (!is.null(lab)) return(lab)
   }
 
-  # vartable
-  vt <- tibble(name = names(dta),
-                       label = map_chr(names(dta), get_label)
-  ) %>%
-    dplyr::rename(!!namevar := name)
+  # apply get_label in tibble
+  vt <- tibble(i = 1:ncol(dta),
+               name = names(dta),
+               label = map_chr(names(dta), get_label)) %>%
+    rename(!!namevar := name)
 
   if (is.null(string)) return(vt)
 
@@ -40,6 +40,3 @@ vartab <- function(dta, string = NULL, name = alias) {
                str_detect(label, regex(string, ignore_case = TRUE)))
   }
 }
-
-
-

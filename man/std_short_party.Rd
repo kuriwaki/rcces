@@ -18,4 +18,5 @@ Standardize party codes
 \examples{
 std_short_party(c("Republican", "Democrat", "Not sure", "Other Party / Independent", "Never Heard of Person")
 
+
 }

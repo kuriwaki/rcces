@@ -3,9 +3,11 @@
 #' Relies on having the office
 #'
 #' @param df CCES dataframe with multiple "perceived vote" questions. Slimmed.
-#' @param prefix
+#' @param prefix character that recogizes the perceived vote question
 #'
-#' @return  The same df but with variables renamed with suffixes.
+#' @export
+#'
+#' @return   The same df but with variables renamed with suffixes.
 std_party_prcp_varname <- function(df, prefix =  "party_prcp_") {
 
   vt <- vartab(df)

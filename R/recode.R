@@ -7,6 +7,9 @@
 #' @examples
 #' std_short_party(c("Republican", "Democrat", "Not sure", "Other Party / Independent", "Never Heard of Person")
 #'
+#'
+#' @export
+#'
 std_short_party <- function(x) {
   dplyr::recode(x,
          Democrat = "D",

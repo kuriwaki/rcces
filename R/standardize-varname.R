@@ -13,13 +13,14 @@ std_party_prcp_varname <- function(df, prefix =  "party_prcp_") {
   vt <- vartab(df)
 
   # get alias of matching
-  rep_var <-   filter(vt, str_detect(label, "(Rep|House)")) %>% pull(alias)
-  if (length(rep_var) > 1) {
-    rep_var <- filter(vt, str_detect(label, "(House)")) %>% pull(alias)
-  }
-  sen1_var <-  filter(vt, str_detect(label, "Sen(ator\\s|)1")) %>% pull(alias)
-  sen2_var <-  filter(vt, str_detect(label, "Sen(ator\\s|)2")) %>% pull(alias)
-  gov_var <-   filter(vt, str_detect(label, "Gov(ernor|)")) %>% pull(alias)
+  rep_var <-   filter(vt, str_detect(label, regex("(Rep|House)", ignore_case = TRUE))) %>% pull(alias)
+  if (length(rep_var) > 1)
+    rep_var <- filter(vt, str_detect(label, regex("(House)", ignore_case = TRUE))) %>% pull(alias)
+
+  sen1_var <-  filter(vt, str_detect(label, regex("Sen(ator\\s|)1", ignore_case = TRUE))) %>% pull(alias)
+  sen2_var <-  filter(vt, str_detect(label, regex("Sen(ator\\s|)2", ignore_case = TRUE))) %>% pull(alias)
+  gov_var <-   filter(vt, str_detect(label, regex("Gov(ernor|)", ignore_case = TRUE))) %>% pull(alias)
+
 
   if (any(length(rep_var) != 1,
           length(sen1_var) != 1,

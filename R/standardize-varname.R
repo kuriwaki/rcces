@@ -17,8 +17,8 @@ std_party_prcp_varname <- function(df, prefix =  "party_prcp_") {
   if (length(rep_var) > 1)
     rep_var <- filter(vt, str_detect(label, regex("(House)", ignore_case = TRUE))) %>% pull(alias)
 
-  sen1_var <-  filter(vt, str_detect(label, regex("Sen(ator\\s|)1", ignore_case = TRUE))) %>% pull(alias)
-  sen2_var <-  filter(vt, str_detect(label, regex("Sen(ator\\s|)2", ignore_case = TRUE))) %>% pull(alias)
+  sen1_var <-  filter(vt, str_detect(label, regex("Sen(ator|)(\\s|)1", ignore_case = TRUE))) %>% pull(alias)
+  sen2_var <-  filter(vt, str_detect(label, regex("Sen(ator|)(\\s|)2", ignore_case = TRUE))) %>% pull(alias)
   gov_var <-   filter(vt, str_detect(label, regex("Gov(ernor|)", ignore_case = TRUE))) %>% pull(alias)
 
 

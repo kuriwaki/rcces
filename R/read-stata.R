@@ -28,7 +28,8 @@ vartab <- function(dta, string = NULL, name = alias) {
   # apply get_label in tibble
   vt <- tibble(i = 1:ncol(dta),
                name = names(dta),
-               label = map_chr(names(dta), get_label)) %>%
+               label = map_chr(names(dta), get_label),
+               class = map_chr(dta, ~str_c(class(.x),  collapse = ", "))) %>%
     rename(!!namevar := name)
 
   if (is.null(string)) return(vt)

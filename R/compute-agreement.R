@@ -1,6 +1,8 @@
 
 
-#' Compute dyadic agreement from dataframe
+#' Compute dyadic agreement from dataframe.
+#'
+#' If vote was not held, assumes status quo. (i.e. doesn't drop)
 #'
 #' @param tbl dataframe
 #' @param chamber One of \code{"H", "S", "Policy"}

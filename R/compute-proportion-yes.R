@@ -7,11 +7,12 @@
 #' @export
 do_split <- function(grptbl) {
   grptbl %>%
+  filter(!is.na(response), !is.na(weight)) %>%
   summarise(wgt_yes = sum(weight * (response == "Y")), # Y's get 1, rest 0. inner product with weight. Sum.
             wgt_no  = sum(weight * (response == "N")),
             wgt_DK  = sum(weight * (response == "DK")),
             raw_yes = sum(response == "Y"),
-            raw_no = sum(response == "N"),
+            raw_no  = sum(response == "N"),
             wgt_N   = sum(weight),
             raw_N   = n()) %>%
     ungroup() %>%

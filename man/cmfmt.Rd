@@ -17,10 +17,6 @@ cmfmt(x, file, pp = FALSE)
 \item{round}{round by}
 
 \item{pp}{if true then multiply by one hundred}
-
-\item{x}{numeric vector}
-
-\item{pp}{if true then multiply by one hundred}
 }
 \description{
 comma formatting to char

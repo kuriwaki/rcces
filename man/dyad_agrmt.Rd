@@ -2,10 +2,15 @@
 % Please edit documentation in R/compute-agreement.R
 \name{dyad_agrmt}
 \alias{dyad_agrmt}
-\title{Compute dyadic agreement from dataframe}
+\title{Compute dyadic agreement from dataframe.}
 \usage{
-dyad_agrmt(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
-  policy_var = "vote")
+dyad_agrmt(
+  tbl,
+  chamber,
+  agrmt_name = "agrmt",
+  svy_var = "response",
+  policy_var = "vote"
+)
 }
 \arguments{
 \item{tbl}{dataframe}
@@ -19,5 +24,5 @@ dyad_agrmt(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
 \item{policy_var}{The vote variable to look at}
 }
 \description{
-Compute dyadic agreement from dataframe
+If vote was not held, assumes status quo. (i.e. doesn't drop)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode.R
 \name{std_short_party}
 \alias{std_short_party}
-\title{Standardize party codes}
+\title{Standardize party codes to single capital letters}
 \usage{
 std_short_party(x)
 }
@@ -13,7 +13,7 @@ std_short_party(x)
 A vector of "D", "R",
 }
 \description{
-Standardize party codes
+Standardize party codes to single capital letters
 }
 \examples{
 std_short_party(c("Republican", "Democrat", "Not sure", "Other Party / Independent", "Never Heard of Person")

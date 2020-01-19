@@ -2,9 +2,11 @@
 
 export()
 export(cast_senate)
+export(ccc_bin_age)
 export(cmfmt)
 export(cmfmtW)
 export(code_threeway)
+export(do_split)
 export(dyad_agrmt)
 export(issue_split)
 export(melt_cces)

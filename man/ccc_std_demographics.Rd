@@ -4,11 +4,13 @@
 \alias{ccc_std_demographics}
 \title{Recode CCES variable values so that they merge to ACS variables}
 \usage{
-ccc_std_demographics(tbl)
+ccc_std_demographics(tbl, only_demog = FALSE)
 }
 \arguments{
 \item{tbl}{A subset of the cumulative common content. Must include variables
 \code{age}, \code{race}, \code{educ}, and \code{gender}.}
+
+\item{only_demog}{Drop variables besides demographics? Defaults to FALSE}
 }
 \description{
 Recode CCES variable values so that they merge to ACS variables

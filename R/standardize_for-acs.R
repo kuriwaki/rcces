@@ -2,11 +2,14 @@
 #'
 #' @param tbl A subset of the cumulative common content. Must include variables
 #'  \code{age}, \code{race}, \code{educ}, and \code{gender}.
-#'
+#' @param only_demog Drop variables besides demographics? Defaults to FALSE
+#' @importFrom glue glue
+#' @importFrom haven as_factor
 #' @export
 #'
-ccc_std_demographics <- function(tbl) {
-  tbl %>%
+#'
+ccc_std_demographics <- function(tbl, only_demog = FALSE) {
+  tbl_modified <- tbl %>%
     # geography
     mutate(cd = as.character(glue("{st}-{str_pad(dist, width = 2, pad = '0')}"))) %>%
     # age
@@ -18,10 +21,10 @@ ccc_std_demographics <- function(tbl) {
     # education
     rename(educ_cces = educ) %>%
     mutate(educ_cces = as.character(as_factor(educ_cces))) %>%
-    left_join(distinct(select(educ_key, educ_cces, educ)), by = "educ_cces") %>%
-    # sort
-    select_if(~any(!is.na(.x))) %>%
-    select(matches("year"),
+    left_join(distinct(select(educ_key, educ_cces, educ)), by = "educ_cces")
+
+    tbl_out <- tbl_modified %>%
+      select(matches("year"),
            matches("case_id"),
            matches("weight"),
            matches("(state|st|cd|dist)"),
@@ -34,6 +37,12 @@ ccc_std_demographics <- function(tbl) {
            matches("marstat"),
            matches("citizen"),
            matches("vv"),
-           everything()) %>%
-    distinct()
+           everything())
+
+    if (only_demog)
+      tbl_out <- select(tbl_out, year:citizen, matches("vv"))
+
+    tbl_out %>%
+      select_if(~any(!is.na(.x))) %>%
+      distinct()
 }

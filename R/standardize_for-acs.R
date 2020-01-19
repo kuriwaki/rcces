@@ -29,9 +29,11 @@ ccc_std_demographics <- function(tbl) {
            matches("pid3$"),
            matches("age"),
            matches("educ"),
+           matches("^race"),
            matches("faminc"),
            matches("marstat"),
            matches("citizen"),
-           matches("vv")) %>%
+           matches("vv"),
+           everything()) %>%
     distinct()
 }

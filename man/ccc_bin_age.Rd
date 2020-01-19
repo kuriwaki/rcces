@@ -4,22 +4,19 @@
 \alias{ccc_bin_age}
 \title{Discretize a vector of age integers into labelled variables}
 \usage{
-ccc_bin_age(
-  agevec,
-  agelbl = structure(1:5, .Names = c("18 to 24 years", "25 to 34 years",
-    "35 to 44 years", "45 to 64 years", "65 years and over"))
-)
+ccc_bin_age(agevec, agelbl = deframe(age5_key))
 }
 \arguments{
 \item{agevec}{a vector of integers}
 
 \item{agelbl}{a value-key pair to be passed into recode,
- with values as the things to be recoded and labels as the labels for each
- value.
-
- @examples
-  ccc_bin_age(c(15:100, NA))}
+with values as the things to be recoded and labels as the labels for each
+value.}
 }
 \description{
 Discretize a vector of age integers into labelled variables
+}
+\examples{
+  ccc_bin_age(c(15:100, NA))
+
 }

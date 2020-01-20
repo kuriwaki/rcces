@@ -15,3 +15,15 @@ ccc_std_demographics(tbl, only_demog = FALSE)
 \description{
 Recode CCES variable values so that they merge to ACS variables
 }
+\examples{
+ library(dataverse)
+
+ # Load Cumulative dataset
+ cumulative_rds <- get_file("cumulative_2006_2018.Rds", "doi:10.7910/DVN/II2DB6")
+ tmp <- tempfile(fileext = ".Rds")
+ writeBin(cumulative_rds, tmp)
+ cumulative_rds <- readr::read_rds(tmp)
+
+ cumulative_std <- ccc_std_demographics(cumulative_rds)
+
+}

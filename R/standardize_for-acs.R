@@ -5,6 +5,18 @@
 #' @param only_demog Drop variables besides demographics? Defaults to FALSE
 #' @importFrom glue glue
 #' @importFrom haven as_factor
+#'
+#' @examples
+#'  library(dataverse)
+#'
+#'  # Load Cumulative dataset
+#'  cumulative_rds <- get_file("cumulative_2006_2018.Rds", "doi:10.7910/DVN/II2DB6")
+#'  tmp <- tempfile(fileext = ".Rds")
+#'  writeBin(cumulative_rds, tmp)
+#'  cumulative_rds <- readr::read_rds(tmp)
+#'
+#'  cumulative_std <- ccc_std_demographics(cumulative_rds)
+#'
 #' @export
 #'
 #'
@@ -34,13 +46,13 @@ ccc_std_demographics <- function(tbl, only_demog = FALSE) {
            matches("educ"),
            matches("^race"),
            matches("faminc"),
-           matches("marstat"),
            matches("citizen"),
+           matches("marstat"),
            matches("vv"),
            everything())
 
     if (only_demog)
-      tbl_out <- select(tbl_out, year:citizen, matches("vv"))
+      tbl_out <- select(tbl_out, year:marstat, matches("vv"))
 
     tbl_out %>%
       select_if(~any(!is.na(.x))) %>%

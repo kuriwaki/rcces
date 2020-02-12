@@ -1,6 +1,4 @@
 
-#' @export
-#'
 library(DBI)
 library(RSQLite)
 library(dbplyr)

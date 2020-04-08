@@ -4,7 +4,9 @@
 \name{cces_dv_ids}
 \alias{cces_dv_ids}
 \title{Identifiers for datasets in CCES dataverse}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 14 rows and 5 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 14 rows and 5 columns.
+}
 \usage{
 cces_dv_ids
 }

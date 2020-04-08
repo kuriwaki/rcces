@@ -8,14 +8,24 @@
 \alias{age5_key}
 \alias{age10_key}
 \title{CCES-ACS variable recode keys}
-\format{A tibble with one row per recoding value
+\format{
+A tibble with one row per recoding value
  \describe{
  \item{race}{An labelled integer of class haven::labelled. Most compact form
  of all the data.}
  \item{race_chr, gender_chr, educ_chr}{Labels, in characters}
  \item{race_cces, edu_cces}{Corresponding labelled in the CCES cumulative common content}
  \item{race_acs}{Corresponding character in the ACS data via the tidycensus package}
- }}
+ }
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2 rows and 2 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 7 rows and 3 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 5 rows and 2 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 3 columns.
+}
 \usage{
 race_key
 

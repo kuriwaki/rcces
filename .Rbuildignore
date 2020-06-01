@@ -1,3 +1,5 @@
 ^rcces\.Rproj$
 ^\.Rproj\.user$
 R/database-connections.R
+^README.Rmd$
+^README.md$

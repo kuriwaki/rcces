@@ -1,16 +1,16 @@
 Package: rcces
-Version: 0.0.2
+Version: 0.1.0
 Title: Tools to Melt, Combine, Clean, and Standardize CCES Questions
 Authors@R: person("Shiro", "Kuriwaki", email = "kuriwaki@g.harvard.edu", role = c("aut", "cre"))
-Description: Utility functions for analyzing and reshaping CCES dta files
-Depends: 
+Description: Utility functions for analyzing and reshaping CCES dta files. Also
+   see kuriwaki/ccesMRPprep.
+Imports: 
   dplyr,
   purrr,
   tibble,
   stringr,
   forcats,
   haven,
-  dataverse
 License: What license it uses
 Encoding: UTF-8
 LazyData: true

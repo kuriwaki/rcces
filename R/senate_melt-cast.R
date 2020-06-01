@@ -1,10 +1,15 @@
 
 #' cast two two columns per case_id
-#' @param tbl A long dataset, where each row is a senator (senator-respobse)
+#' @param tbl A long dataset, where each row is a senator (senator-response)
 #' @param cast_names The names of the variables in tbl that will be the \code{value.var} in dcast
 #' @param names  New names
 #'
+#' @importFrom data.table as.data.table dcast.data.table
+#' @import dplyr
+#'
 #' @export
+#'
+#'
 cast_senate <- function(tbl, cast_names, names) {
 
   dt <- as.data.table(tbl)

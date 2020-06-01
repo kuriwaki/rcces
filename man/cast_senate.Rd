@@ -7,7 +7,7 @@
 cast_senate(tbl, cast_names, names)
 }
 \arguments{
-\item{tbl}{A long dataset, where each row is a senator (senator-respobse)}
+\item{tbl}{A long dataset, where each row is a senator (senator-response)}
 
 \item{cast_names}{The names of the variables in tbl that will be the \code{value.var} in dcast}
 

@@ -4,6 +4,8 @@
 #' @param q_expr regex that selects questions
 #' @export
 #'
+#' @import dplyr
+#'
 melt_cces <- function(tbl, q_expr){
 
   # drop unnecessary columns and manipulate

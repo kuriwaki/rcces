@@ -4,8 +4,14 @@
 #'
 #' @return A vector of "D", "R",
 #'
+#' @importFrom dplyr recode
+#'
 #' @examples
-#' std_short_party(c("Republican", "Democrat", "Not sure", "Other Party / Independent", "Never Heard of Person")
+#' std_short_party(c("Republican",
+#' "Democrat",
+#' "Not sure",
+#'  "Other Party / Independent",
+#'  "Never Heard of Person")
 #'
 #'
 #' @export

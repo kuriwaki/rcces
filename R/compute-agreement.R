@@ -10,6 +10,10 @@
 #' @param svy_var The opinion variable to look at
 #' @param policy_var The vote variable to look at
 #'
+#'
+#' @importFrom dplyr mutate case_when pull
+#' @import magrittr `%>%`
+#'
 #'@export
 #'
 dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response", policy_var = "vote") {
@@ -51,6 +55,8 @@ dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
 #' @param data dataset
 #' @param var1 first variable of Y, N, DK
 #'
+#' @importFrom dplyr mutate case_when pull
+#'
 #' @export
 yes_no_agrmt <- function(var1, var2, data) {
   var1 <- enquo(var1)
@@ -74,10 +80,14 @@ yes_no_agrmt <- function(var1, var2, data) {
 #' @param data dataset
 #' @param var1 first variable of Y, N, DK, or D,R
 #'
+#'
+#' @importFrom dplyr mutate case_when pull
+#' @importFrom magrittr `%>%`
+#'
 #' @export
 #'
 #' @examples
-#'df <- tibble(pid_self =   c("D", "R", "I", "D"),
+#' df <- tibble(pid_self =   c("D", "R", "I", "D"),
 #'              pid_actl =   c("R", "R", "R", "D"),
 #'              issue_self = c("Y", "N", "DK", "N"),
 #'              issue_actl = c("N", "N", "N", "Y"))

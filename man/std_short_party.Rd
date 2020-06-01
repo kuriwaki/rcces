@@ -16,7 +16,11 @@ A vector of "D", "R",
 Standardize party codes to single capital letters
 }
 \examples{
-std_short_party(c("Republican", "Democrat", "Not sure", "Other Party / Independent", "Never Heard of Person")
+std_short_party(c("Republican",
+"Democrat",
+"Not sure",
+ "Other Party / Independent",
+ "Never Heard of Person")
 
 
 }

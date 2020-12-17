@@ -12,7 +12,7 @@
 #'
 #'
 #' @importFrom dplyr mutate case_when pull
-#' @import magrittr `%>%`
+#' @importFrom magrittr `%>%`
 #'
 #'@export
 #'

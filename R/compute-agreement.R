@@ -11,7 +11,7 @@
 #' @param policy_var The vote variable to look at
 #'
 #'
-#' @importFrom dplyr mutate case_when pull
+#' @importFrom dplyr mutate case_when pull as_tibble
 #' @importFrom magrittr `%>%`
 #'
 #'@export
@@ -24,7 +24,7 @@ dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
   icpsr_var <- glue("{recode(chamber, `H` = 'rep', `S` = 'sen', `Policy` = 'foo')}_icpsr") # for matching purposes
 
   # core
-  tbl_agrmt <- tbl_df(tbl) %>%
+  tbl_agrmt <- as_tibble(tbl) %>%
     mutate(agrmt = NA) %>%
     mutate(agrmt = replace(agrmt, (.data[[svy_var]] == "Y" & .data[[policy_var]] == "Y") | (.data[[svy_var]] == "N" & .data[[policy_var]] == "N") | (.data[[svy_var]] == "N" & .data[[held_var]] == 0), 1),
            agrmt = replace(agrmt, (.data[[svy_var]] == "Y" & .data[[policy_var]] == "N") | (.data[[svy_var]] == "N" & .data[[policy_var]] == "Y") | (.data[[svy_var]] == "Y" & .data[[held_var]] == 0), -1))

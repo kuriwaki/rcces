@@ -19,7 +19,7 @@ cast_senate <- function(tbl, cast_names, names) {
                          value.var = cast_names,
                          sep = "")
 
-  wd2 <- tbl_df(wd) %>%
+  wd2 <- as_tibble(wd) %>%
     rename(sen1_icpsr = sen_icpsr1) %>% # rename
     rename(sen2_icpsr = sen_icpsr2) %>%
     rename_(.dots = setNames("sen_dyad_agrmt1", names[1])) %>% # rename

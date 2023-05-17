@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 dataverse-pull_sk.R
+
+.DS_Store

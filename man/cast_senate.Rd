@@ -4,7 +4,7 @@
 \alias{cast_senate}
 \title{cast two two columns per case_id}
 \usage{
-cast_senate(tbl, cast_names, names)
+cast_senate(tbl, cast_names)
 }
 \arguments{
 \item{tbl}{A long dataset, where each row is a senator (senator-response)}

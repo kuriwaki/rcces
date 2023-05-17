@@ -4,32 +4,19 @@
 #' @param cast_names The names of the variables in tbl that will be the \code{value.var} in dcast
 #' @param names  New names
 #'
-#' @importFrom data.table as.data.table dcast.data.table
+#' @importFrom tidyr pivot_wider
 #' @import dplyr
 #'
 #' @export
 #'
 #'
-cast_senate <- function(tbl, cast_names, names) {
+cast_senate <- function(tbl, cast_names) {
 
-  dt <- as.data.table(tbl)
-
-  wd <- dcast.data.table(dt,
-                         formula = year + case_id + qID ~ rownum,
-                         value.var = cast_names,
-                         sep = "")
-
-  wd2 <- as_tibble(wd) %>%
-    rename(sen1_icpsr = sen_icpsr1) %>% # rename
-    rename(sen2_icpsr = sen_icpsr2) %>%
-    rename_(.dots = setNames("sen_dyad_agrmt1", names[1])) %>% # rename
-    rename_(.dots = setNames("sen_dyad_agrmt2", names[2]))
-
-  if ("vote" %in% colnames(tbl)) {
-    wd2 <- wd2 %>%
-      rename_(.dots = setNames("vote1", "sen1vote")) %>%
-      rename_(.dots = setNames("vote2", "sen2vote"))
-  }
-
-  return(wd2)
+  tbl |>
+    pivot_wider(
+      id_cols = c(year, case_id, qID),
+      names_from = rownum,
+      values_from = cast_names,
+      names_glue = "sen{rownum}_{str_remove(.value, 'sen_')}"
+    )
 }

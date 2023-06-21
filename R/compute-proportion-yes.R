@@ -16,8 +16,8 @@ do_split <- function(grptbl) {
             n_wgt   = sum(weight),
             n_raw   = n()) %>%
     ungroup() %>%
-    mutate(pct_yes = wgt_yes / wgt_N,
-           pct_yes2 = wgt_yes / (wgt_yes + wgt_no))
+    mutate(pct_yes = yes_wgt / n_wgt,
+           pct_yes2 = yes_wgt / (yes_wgt + no_wgt))
 }
 
 #' Proportion Yes by topic

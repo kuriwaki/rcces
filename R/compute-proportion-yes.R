@@ -8,13 +8,13 @@
 do_split <- function(grptbl) {
   grptbl %>%
   filter(!is.na(response), !is.na(weight)) %>%
-  summarise(wgt_yes = sum(weight * (response == "Y")), # Y's get 1, rest 0. inner product with weight. Sum.
-            wgt_no  = sum(weight * (response == "N")),
-            wgt_DK  = sum(weight * (response == "DK")),
-            raw_yes = sum(response == "Y"),
-            raw_no  = sum(response == "N"),
-            wgt_N   = sum(weight),
-            raw_N   = n()) %>%
+  summarise(yes_wgt = sum(weight * (response == "Y")), # Y's get 1, rest 0. inner product with weight. Sum.
+            no_wgt  = sum(weight * (response == "N")),
+            wgt_dk  = sum(weight * (response == "DK")),
+            yes_raw = sum(response == "Y"),
+            no_raw  = sum(response == "N"),
+            n_wgt   = sum(weight),
+            n_raw   = n()) %>%
     ungroup() %>%
     mutate(pct_yes = wgt_yes / wgt_N,
            pct_yes2 = wgt_yes / (wgt_yes + wgt_no))

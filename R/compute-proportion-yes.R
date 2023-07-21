@@ -14,9 +14,10 @@ do_split <- function(grptbl) {
             yes_raw = sum(response == "Y"),
             no_raw  = sum(response == "N"),
             n_wgt   = sum(weight),
+            n_eff   = (sum(weight)^2) / sum(weight^2),
             n_raw   = n()) %>%
     ungroup() %>%
-    mutate(pct_yes = yes_wgt / n_wgt,
+    mutate(pct_yes2_raw = yes_raw / (yes_raw + no_raw),
            pct_yes2 = yes_wgt / (yes_wgt + no_wgt))
 }
 

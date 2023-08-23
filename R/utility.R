@@ -23,7 +23,7 @@ my.parse <- function(char, drop_year = TRUE) {
 #' @param round round by
 #' @param pp if true then multiply by one hundred
 #'
-#' @import readr write_lines
+#' @importFrom readr write_lines
 #' @export
 #'
 cmfmtW <- function(x, file, round = NA, pp = FALSE) {

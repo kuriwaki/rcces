@@ -10,13 +10,13 @@ do_split <- function(grptbl) {
   filter(!is.na(response), !is.na(weight)) %>%
   summarise(yes_wgt = sum(weight * (response == "Y")), # Y's get 1, rest 0. inner product with weight. Sum.
             no_wgt  = sum(weight * (response == "N")),
-            wgt_dk  = sum(weight * (response == "DK")),
+            dk_wgt  = sum(weight * (response == "DK")),
             yes_raw = sum(response == "Y"),
             no_raw  = sum(response == "N"),
             n_wgt   = sum(weight),
             n_eff   = (sum(weight)^2) / sum(weight^2),
-            n_raw   = n()) %>%
-    ungroup() %>%
+            n_raw   = n(),
+            .groups = "drop") %>%
     mutate(pct_yes2_raw = yes_raw / (yes_raw + no_raw),
            pct_yes2 = yes_wgt / (yes_wgt + no_wgt))
 }
@@ -36,7 +36,8 @@ do_split <- function(grptbl) {
 issue_split <- function(tbl, ...) {
 
   var <- quos(...)
-  groupby <- quos(q_label, !!!var)
+  groupby <- quos(q_label, year, !!!var)
+  groupby2 <- quos(q_label, !!!var)
 
   # usually response NA means the question was not asked, so they should be
   # dropped rather than not counted in the numerator
@@ -44,7 +45,18 @@ issue_split <- function(tbl, ...) {
   grp.tbl <- tbl %>%
     filter(!is.na(response)) %>%
     group_by(!!! groupby) %>%
-    do_split()
+    do_split() |>
+    # then sum across years, weighting by sample size
+    group_by(!!! groupby2) %>%
+    summarize(
+      across(matches("(yes|no)_raw"), sum),
+      across(matches("(yes|no|dk)_wgt"), sum),
+      pct_yes2_raw = weighted.mean(pct_yes2_raw, n_raw),
+      pct_yes2 = weighted.mean(pct_yes2, n_raw), # weight by sample size (not necessarily weighted)
+      across(matches("n_"), sum),
+      .groups = "drop"
+    )
+
 
   grp.tbl
 }

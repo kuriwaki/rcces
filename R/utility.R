@@ -22,6 +22,8 @@ my.parse <- function(char, drop_year = TRUE) {
 #' @param file path to write to
 #' @param round round by
 #' @param pp if true then multiply by one hundred
+#'
+#' @import readr write_lines
 #' @export
 #'
 cmfmtW <- function(x, file, round = NA, pp = FALSE) {
@@ -29,7 +31,7 @@ cmfmtW <- function(x, file, round = NA, pp = FALSE) {
   if (!is.na(round)) x <- round(x, round)
 
   x <- format(x, big.mark = ",")
-  writeLines(x, file)
+  write_lines(x, file)
 }
 
 #' @rdname cmfmt

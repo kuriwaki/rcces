@@ -50,20 +50,21 @@ vartab <- function(dta, string = NULL, name = alias) {
 #'  of the form `c(alias1 = "description1", alias2 = "description2)` that
 #'  can be coerced into one.
 #' @export
-#' @examples
-#'  mt_stata <- attach_varlab(
-#'    as_tibble(mtcars),
-#'    c(cyl = "Number of cylinders", hp = "Gross horsepower"))
-#'  str(mt_stata)
 #'
-#' vartab <- tribble(
-#'  ~ cyl, ~hp,
-#'  "Number of cylinders", "Gross horsepower"
-#' )
-#'  attach_varlab(
-#'   as_tibble(mtcars),
-#'   c(cyl = "Number of cylinders", hp = "Gross horsepower")
+#' @examples
+#'  mt_stata <- as_tibble(mtcars) |>
+#'   attach_varlab(c(cyl = "Number of cylinders", hp = "Gross horsepower"))
+#'
+#'  # bulk edits by a tibble format
+#'  vartab <- tribble(
+#'   ~ alias, ~description,
+#'   "cyl",  "Number of cylinders",
+#'   "hp",  "Gross horsepower"
 #'  )
+#'  mt_stata <- as_tibble(mtcars) |>
+#'   attach_varlab(vartab)
+#'
+#'
 attach_varlab <- function(tbl, labels, overwrite = TRUE) {
 
   if (!inherits(labels, "data.frame"))

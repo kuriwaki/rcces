@@ -2,8 +2,8 @@
 #'
 #' Relies on having the office
 #'
-#' @param df CCES dataframe with multiple "perceived vote" questions. Slimmed.
-#' @param prefix character that recogizes the perceived vote question
+#' @param df CCES data frame with multiple "perceived vote" questions. Slimmed.
+#' @param prefix character that recognizes the perceived vote question
 #'
 #' @export
 #'

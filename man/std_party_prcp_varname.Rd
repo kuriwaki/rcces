@@ -7,9 +7,9 @@
 std_party_prcp_varname(df, prefix = "party_prcp_")
 }
 \arguments{
-\item{df}{CCES dataframe with multiple "perceived vote" questions. Slimmed.}
+\item{df}{CCES data frame with multiple "perceived vote" questions. Slimmed.}
 
-\item{prefix}{character that recogizes the perceived vote question}
+\item{prefix}{character that recognizes the perceived vote question}
 }
 \value{
 The same df but with variables renamed with suffixes.

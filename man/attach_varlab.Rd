@@ -18,17 +18,17 @@ can be coerced into one.}
 Append variable labels for Stata export
 }
 \examples{
- mt_stata <- attach_varlab(
-   as_tibble(mtcars),
-   c(cyl = "Number of cylinders", hp = "Gross horsepower"))
- str(mt_stata)
+ mt_stata <- as_tibble(mtcars) |>
+  attach_varlab(c(cyl = "Number of cylinders", hp = "Gross horsepower"))
 
-vartab <- tribble(
- ~ cyl, ~hp,
- "Number of cylinders", "Gross horsepower"
-)
- attach_varlab(
-  as_tibble(mtcars),
-  c(cyl = "Number of cylinders", hp = "Gross horsepower")
+ # bulk edits by a tibble format
+ vartab <- tribble(
+  ~ alias, ~description,
+  "cyl",  "Number of cylinders",
+  "hp",  "Gross horsepower"
  )
+ mt_stata <- as_tibble(mtcars) |>
+  attach_varlab(vartab)
+
+
 }

@@ -1,9 +1,9 @@
 Package: rcces
 Version: 0.1.0
 Title: Tools to Melt, Combine, Clean, and Standardize CCES Questions
-Authors@R: person("Shiro", "Kuriwaki", email = "kuriwaki@g.harvard.edu", role = c("aut", "cre"))
+Authors@R: person("Shiro", "Kuriwaki", email = "shirokuriwaki@gmail.com", role = c("aut", "cre"))
 Description: Utility functions for analyzing and reshaping CCES dta files. 
-  This package  is not meant for production, for better documented standard 
+  This packageis not meant for production. For better documented standard 
   functions see `kuriwaki/ccesMRPprep`, `kuriwaki/ccesMRPrun`, and `kuriwaki/cces_cumulative`.
 Imports: 
   dplyr,

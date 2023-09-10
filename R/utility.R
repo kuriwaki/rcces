@@ -24,6 +24,7 @@ my.parse <- function(char, drop_year = TRUE) {
 #' @param pp if true then multiply by one hundred
 #'
 #' @importFrom readr write_lines
+#' @importFrom purrr walk2
 #' @export
 #'
 cmfmtW <- function(x, file, round = NA, pp = FALSE) {
@@ -31,7 +32,7 @@ cmfmtW <- function(x, file, round = NA, pp = FALSE) {
   if (!is.na(round)) x <- round(x, round)
 
   x <- format(x, big.mark = ",")
-  write_lines(x, file)
+  purrr::walk2(x, file, ~ write_lines(.x, .y))
 }
 
 #' @rdname cmfmt

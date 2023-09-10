@@ -16,24 +16,30 @@ repositories listed below.
 
 ## Installation
 
-You can install the package using devtools.
+The package will not be on CRAN. You can install it via:
 
 ``` r
-devtools::install_github("kuriwaki/rcces")
+pak::pkg_install("kuriwaki/rcces")
+```
+
+Or, equivalently,
+
+``` r
+remotes::install_github("kuriwaki/rcces")
 ```
 
 ## Related Packages
 
-  - [`ccesMRPprep`](https://www.shirokuriwaki.com/ccesMRPprep/reference/index.html)
-    includes functions and documentation on how to download and
-    standardized data. It is geared towards standardization for MRP, but
-    some of the vignettes and documentation use common standardization
-    procedures and document features of the MRP dataset.
-  - [`ccesMRPrun`](https://github.com/kuriwaki/ccesMRPrun/tree/master/R)
-    includes functions to fit a multilevel model and poststratify to a
-    target (computed by `ccesMRPprep`).
-  - [`cces_cumulative`](https://github.com/kuriwaki/cces_cumulative)
-    includes code that shows how the cumulative Common Content was
-    created. The cumulative dataset is a stacked version of key columns
-    in the year-specific CCES, and can be used as a base dataset into
-    which year-specific questions can be merged back.
+- [`ccesMRPprep`](https://www.shirokuriwaki.com/ccesMRPprep/reference/index.html)
+  includes functions and documentation on how to download and
+  standardized data. It is geared towards standardization for MRP, but
+  some of the vignettes and documentation use common standardization
+  procedures and document features of the MRP dataset.
+- [`ccesMRPrun`](https://github.com/kuriwaki/ccesMRPrun/tree/master/R)
+  includes functions to fit a multilevel model and poststratify to a
+  target (computed by `ccesMRPprep`).
+- [`cces_cumulative`](https://github.com/kuriwaki/cces_cumulative)
+  includes code that shows how the cumulative Common Content was
+  created. The cumulative dataset is a stacked version of key columns in
+  the year-specific CCES, and can be used as a base dataset into which
+  year-specific questions can be merged back.

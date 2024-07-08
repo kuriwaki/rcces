@@ -4,7 +4,16 @@
 \alias{prop_seats}
 \title{Compute measure for seats relevant for seats-votes}
 \usage{
-prop_seats(tbl, pct_var = pct_yes2_raw, n_var = n_raw, group_var = q_label)
+prop_seats(
+  tbl,
+  pct_var = pct_yes2_raw,
+  n_var = n_raw,
+  group_var = q_label,
+  se_factor = 1
+)
+}
+\arguments{
+\item{se_factor}{What to multiply the standard errors by after.}
 }
 \description{
 Compute measure for seats relevant for seats-votes

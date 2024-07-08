@@ -16,6 +16,7 @@ prop_seats <- function(
       avg_dist_supp = mean({{pct_var}}),
       sd_dists_supp = sd({{pct_var}}),
       avg_se = mean(sdest),
+      avg_n = mean({{n_var}}),
       n_dists = n(),
       .by = {{group_var}})
 }

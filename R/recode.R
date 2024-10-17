@@ -38,6 +38,16 @@ H_to_cd <- function(x, h_to = "Congressional Districts", s_to = "States") {
   )
 }
 
+#' @rdname H_to_house
+#' @export
+H_to_rep <- function(x, h_to = "House Representative", s_to = "Senator") {
+  case_match(
+    x,
+    "H" ~ h_to,
+    "S" ~ s_to,
+  )
+}
+
 #' Standardize party codes to single capital letters
 #'
 #' @param x A vector of characters with unstandardized party, e.g. "Republican", "Not sure"..

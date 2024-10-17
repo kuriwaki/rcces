@@ -2,6 +2,7 @@
 
 export(H_to_cd)
 export(H_to_house)
+export(H_to_rep)
 export(attach_varlab)
 export(cast_senate)
 export(cmfmt)

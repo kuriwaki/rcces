@@ -3,11 +3,14 @@
 \name{H_to_house}
 \alias{H_to_house}
 \alias{H_to_cd}
+\alias{H_to_rep}
 \title{Recode H/S}
 \usage{
 H_to_house(x)
 
 H_to_cd(x, h_to = "Congressional Districts", s_to = "States")
+
+H_to_rep(x, h_to = "House Representative", s_to = "Senator")
 }
 \description{
 A convenience function to recode H to House (or CDs) and S to Senate
@@ -15,16 +18,17 @@ A convenience function to recode H to House (or CDs) and S to Senate
 \examples{
 library(tibble)
 library(dplyr)
+library(ggplot2)
 
 
 tibble(chamber = c("H", "S")) |>
  ggplot() +
- geom_point(x = 1, y = 1) +
- facet_wrap(~ chamber, labeller = labeller(chamber = H_to_House))
+ geom_text(aes(label = chamber), x = 0.5, y = 0.5) +
+ facet_wrap(~ chamber, labeller = labeller(chamber = H_to_house))
 
 tibble(chamber = c("H", "S")) |>
  ggplot() +
- geom_point(x = 1, y = 1) +
+ geom_text(aes(label = chamber), x = 0.5, y = 0.5) +
  facet_wrap(~ chamber, labeller = labeller(chamber = H_to_cd))
 
 }

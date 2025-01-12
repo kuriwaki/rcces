@@ -3,11 +3,14 @@
 \name{H_to_house}
 \alias{H_to_house}
 \alias{H_to_cd}
+\alias{H_to_rep}
 \title{Recode H/S}
 \usage{
 H_to_house(x)
 
 H_to_cd(x, h_to = "Congressional Districts", s_to = "States")
+
+H_to_rep(x, h_to = "House Representative", s_to = "Senator")
 }
 \description{
 A convenience function to recode H to House (or CDs) and S to Senate

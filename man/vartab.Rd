@@ -7,7 +7,7 @@
 vartab(dta, string = NULL, name = alias)
 }
 \arguments{
-\item{dta}{output from \env{read_dta}}
+\item{dta}{output from \env{read_dta} or \env{read_sav}}
 
 \item{string}{string to search and filter, optional}
 

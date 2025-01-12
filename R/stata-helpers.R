@@ -1,10 +1,13 @@
 
 #' Recreate Stata's variable table
 #'
-#' @param dta output from \env{read_dta}
+#' @param dta output from \env{read_dta} or \env{read_sav}
 #' @param string string to search and filter, optional
 #' @param name Name of the variable for the column of original stata variables
 #'
+#' @importFrom purrr map_chr
+#' @importFrom stringr str_detect str_c
+#' @importFrom tibble tibble
 #' @export
 #' @examples
 #' # example data (what a read_dta tbl would look like)

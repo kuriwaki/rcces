@@ -18,6 +18,7 @@ Recreate Stata's variable table
 }
 \examples{
 # example data (what a read_dta tbl would look like)
+library(tibble)
 df <- tibble(id = 1:3, pid = 1:3, age = 1:3)
 attr(df[["id"]], "label") <- "Case Identifier"
 attr(df[["pid"]], "label") <- "Partisan Identity"

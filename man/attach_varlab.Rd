@@ -18,6 +18,8 @@ can be coerced into one.}
 Append variable labels for Stata export
 }
 \examples{
+library(tibble)
+
  mt_stata <- as_tibble(mtcars) |>
   attach_varlab(c(cyl = "Number of cylinders", hp = "Gross horsepower"))
 

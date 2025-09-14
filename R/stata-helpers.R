@@ -6,11 +6,12 @@
 #' @param name Name of the variable for the column of original stata variables
 #'
 #' @importFrom purrr map_chr
-#' @importFrom stringr str_detect str_c
+#' @importFrom stringr str_detect str_c regex
 #' @importFrom tibble tibble
 #' @export
 #' @examples
 #' # example data (what a read_dta tbl would look like)
+#' library(tibble)
 #' df <- tibble(id = 1:3, pid = 1:3, age = 1:3)
 #' attr(df[["id"]], "label") <- "Case Identifier"
 #' attr(df[["pid"]], "label") <- "Partisan Identity"
@@ -55,6 +56,8 @@ vartab <- function(dta, string = NULL, name = alias) {
 #' @export
 #'
 #' @examples
+#' library(tibble)
+#'
 #'  mt_stata <- as_tibble(mtcars) |>
 #'   attach_varlab(c(cyl = "Number of cylinders", hp = "Gross horsepower"))
 #'

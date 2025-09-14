@@ -15,6 +15,7 @@ code_threeway(data, var1, var2)
 simpler version of dyad agreement, intended for long form where office is set
 }
 \examples{
+library(tibble)
 df <- tibble(pid_self =   c("D", "R", "I", "D"),
              pid_actl =   c("R", "R", "R", "D"),
              issue_self = c("Y", "N", "DK", "N"),
@@ -23,6 +24,5 @@ df <- tibble(pid_self =   c("D", "R", "I", "D"),
 code_threeway(df, pid_self, pid_actl)
 code_threeway(df, issue_self, issue_actl)
 
-code_threeway()
 
 }

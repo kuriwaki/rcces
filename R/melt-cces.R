@@ -5,6 +5,7 @@
 #' @export
 #'
 #' @import dplyr
+#' @importFrom data.table melt as.data.table
 #'
 melt_cces <- function(tbl, q_expr){
 

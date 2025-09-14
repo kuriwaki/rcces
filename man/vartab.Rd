@@ -7,7 +7,7 @@
 vartab(dta, string = NULL, name = alias)
 }
 \arguments{
-\item{dta}{output from \env{read_dta}}
+\item{dta}{output from \env{read_dta} or \env{read_sav}}
 
 \item{string}{string to search and filter, optional}
 
@@ -18,6 +18,7 @@ Recreate Stata's variable table
 }
 \examples{
 # example data (what a read_dta tbl would look like)
+library(tibble)
 df <- tibble(id = 1:3, pid = 1:3, age = 1:3)
 attr(df[["id"]], "label") <- "Case Identifier"
 attr(df[["pid"]], "label") <- "Partisan Identity"

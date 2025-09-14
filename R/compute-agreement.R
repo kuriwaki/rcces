@@ -87,6 +87,7 @@ yes_no_agrmt <- function(var1, var2, data) {
 #' @export
 #'
 #' @examples
+#' library(tibble)
 #' df <- tibble(pid_self =   c("D", "R", "I", "D"),
 #'              pid_actl =   c("R", "R", "R", "D"),
 #'              issue_self = c("Y", "N", "DK", "N"),
@@ -95,7 +96,6 @@ yes_no_agrmt <- function(var1, var2, data) {
 #' code_threeway(df, pid_self, pid_actl)
 #' code_threeway(df, issue_self, issue_actl)
 #'
-#' code_threeway()
 #'
 code_threeway <- function(data, var1, var2) {
   var1 <- enquo(var1)

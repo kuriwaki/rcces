@@ -6,7 +6,7 @@
 #'
 #' @export
 do_split <- function(grptbl) {
-  grptbl %>%
+  sums <- grptbl %>%
   filter(!is.na(response), !is.na(weight)) %>%
   summarise(yes_wgt = sum(weight * (response == "Y")), # Y's get 1, rest 0. inner product with weight. Sum.
             no_wgt  = sum(weight * (response == "N")),
@@ -16,7 +16,8 @@ do_split <- function(grptbl) {
             n_wgt   = sum(weight),
             n_eff   = (sum(weight)^2) / sum(weight^2),
             n_raw   = n(),
-            .groups = "drop") %>%
+            .groups = "drop")
+  sums |>
     mutate(pct_yes2_raw = yes_raw / (yes_raw + no_raw),
            pct_yes2 = yes_wgt / (yes_wgt + no_wgt))
 }
@@ -56,7 +57,6 @@ issue_split <- function(tbl, ...) {
       across(matches("n_"), sum),
       .groups = "drop"
     )
-
 
   grp.tbl
 }

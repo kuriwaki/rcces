@@ -4,8 +4,8 @@
 #'
 #'
 #' @name rcces-package
-#' @docType package
-#' @author person("Shiro", "Kuriwaki", email = "kuriwaki@g.harvard.edu", role = c("aut", "cre"))
+#' @docType _PACKAGE
+#' @author person("Shiro", "Kuriwaki", email = "shirokuriwaki@gmail.com", role = c("aut", "cre"))
 #' @keywords package
 NULL
 

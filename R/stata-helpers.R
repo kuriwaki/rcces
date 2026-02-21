@@ -53,6 +53,7 @@ vartab <- function(dta, string = NULL, name = alias) {
 #'  two columns called `alias` and `description`, OR a vector
 #'  of the form `c(alias1 = "description1", alias2 = "description2)` that
 #'  can be coerced into one.
+#' @param overwrite If \code{TRUE} (default), overwrite existing labels.
 #' @export
 #'
 #' @examples

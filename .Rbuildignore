@@ -1,6 +1,8 @@
 ^rcces\.Rproj$
 ^\.Rproj\.user$
-R/database-connections.R
-^README.Rmd$
+R/archive
 ^README.md$
 test.dta
+^data-raw$
+^\.claude$
+^LICENSE\.md$

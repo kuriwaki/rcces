@@ -1,8 +1,9 @@
 # function to compute proportion Yes on  any constituency
 
-#' Computation underlying ques_split and issue_split
+#' Computation underlying \code{question_split} and \code{issue_split}
 #'
 #' @rdname split
+#' @param grptbl A grouped data frame with columns \code{response} and \code{weight}.
 #'
 #' @export
 do_split <- function(grptbl) {

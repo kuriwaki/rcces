@@ -2,17 +2,21 @@
 % Please edit documentation in R/compute-agreement.R
 \name{code_threeway}
 \alias{code_threeway}
-\title{simpler version of dyad agreement, intended for long form where office is set}
+\title{Code threeway agreement (-1, 0, 1)}
 \usage{
 code_threeway(data, var1, var2)
 }
 \arguments{
 \item{data}{dataset}
 
-\item{var1}{first variable of Y, N, DK, or D,R}
+\item{var1}{first variable of Y, N, DK, or D, R}
+
+\item{var2}{second variable of Y, N, DK, or D, R}
 }
 \description{
-simpler version of dyad agreement, intended for long form where office is set
+Simpler version of dyad agreement, intended for long form where office is set.
+Returns 1 for agreement, -1 for disagreement, 0 for don't know / independent,
+and NA if either input is missing.
 }
 \examples{
 library(tibble)

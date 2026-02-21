@@ -13,9 +13,20 @@
 #'
 #' @importFrom dplyr mutate case_when pull as_tibble
 #' @importFrom magrittr `%>%`
+#' @importFrom glue glue
 #'
 #'@export
 #'
+#' @examples
+#' library(tibble)
+#' df <- tibble(
+#'   year = 2016, case_id = 1:4, qID = "CC16_350a",
+#'   response     = c("Y", "N", "Y", "DK"),
+#'   vote         = c("Y", "Y", "N", "N"),
+#'   vote_held_H  = c(1, 1, 1, 1),
+#'   rep_icpsr    = 1001:1004
+#' )
+#' dyad_agrmt(df, chamber = "H")
 dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response", policy_var = "vote") {
 
   if (!chamber %in% c("H", "S", "Policy")) stop("Must be H or S")
@@ -49,36 +60,15 @@ dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
 }
 
 
-
-#' simpler version of dyad agreement, intended for long form where office is set
+#' Code threeway agreement (-1, 0, 1)
+#'
+#' Simpler version of dyad agreement, intended for long form where office is set.
+#' Returns 1 for agreement, -1 for disagreement, 0 for don't know / independent,
+#' and NA if either input is missing.
 #'
 #' @param data dataset
-#' @param var1 first variable of Y, N, DK
-#'
-#' @importFrom dplyr mutate case_when pull
-#'
-#' @export
-yes_no_agrmt <- function(var1, var2, data) {
-  var1 <- enquo(var1)
-  var2 <- enquo(var2)
-
-  data %>%
-    mutate(out = case_when(
-      !!var1 == "Y" & !!var2 == "Y" ~ 1,
-      !!var1 == "N" & !!var2 == "N" ~ 1,
-      !!var1 == "Y" & !!var2 == "N" ~ -1,
-      !!var1 == "N" & !!var2 == "Y" ~ -1,
-      !!var1 == "DK" | !!var2 == "DK" ~ 0,
-      TRUE ~ 0
-    )) %>%
-    mutate(out = replace(out, is.na(!!var1) | is.na(!!var2), NA)) %>%
-    pull(out)
-}
-
-#' simpler version of dyad agreement, intended for long form where office is set
-#'
-#' @param data dataset
-#' @param var1 first variable of Y, N, DK, or D,R
+#' @param var1 first variable of Y, N, DK, or D, R
+#' @param var2 second variable of Y, N, DK, or D, R
 #'
 #'
 #' @importFrom dplyr mutate case_when pull

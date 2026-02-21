@@ -13,6 +13,8 @@ attach_varlab(tbl, labels, overwrite = TRUE)
 two columns called `alias` and `description`, OR a vector
 of the form `c(alias1 = "description1", alias2 = "description2)` that
 can be coerced into one.}
+
+\item{overwrite}{If \code{TRUE} (default), overwrite existing labels.}
 }
 \description{
 Append variable labels for Stata export

@@ -26,3 +26,14 @@ dyad_agrmt(
 \description{
 If vote was not held, assumes status quo. (i.e. doesn't drop)
 }
+\examples{
+library(tibble)
+df <- tibble(
+  year = 2016, case_id = 1:4, qID = "CC16_350a",
+  response     = c("Y", "N", "Y", "DK"),
+  vote         = c("Y", "Y", "N", "N"),
+  vote_held_H  = c(1, 1, 1, 1),
+  rep_icpsr    = 1001:1004
+)
+dyad_agrmt(df, chamber = "H")
+}

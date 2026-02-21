@@ -1,10 +1,26 @@
 
-#' Parse no-space labels to cleaner words for graphing
+#' Parse compact question labels to readable words for graphing
+#'
+#' Inserts spaces into camelCase question/issue labels and optionally
+#' strips year suffixes, e.g. \code{"CapAndTrade"} becomes \code{"Cap And Trade"}.
 #'
 #' @param char text to parse
+#' @param drop_year If \code{TRUE} (default), remove four-digit year strings
 #'
 #' @export
-my.parse <- function(char, drop_year = TRUE) {
+#' @examples
+#' # Real CCES question labels (camelCase from the question-vote key)
+#' parse_qlabel(c("BanAssaultRifle2013", "RepealACA2017", "CapAndTrade"))
+#' # [1] "Ban Assault Rifle " "Repeal ACA "  "Cap And Trade"
+#'
+#' # Keep year suffixes
+#' parse_qlabel(c("GunBackgroundCheck2018", "RaiseMinimumWage2016"), drop_year = FALSE)
+#' # [1] "Gun Background Check 2018" "Raise Minimum Wage 2016"
+#'
+#' # Handles acronyms and special cases
+#' parse_qlabel(c("SCHIP2009", "PPACA", "DoddFrank"), drop_year = FALSE)
+#' # [1] "SCHIP 2009" "PPACA" "Dodd Frank"
+parse_qlabel <- function(char, drop_year = TRUE) {
   pattern <- "([a-z])([A-X2])"
   replacement <- "\\1 \\2"
 
@@ -14,6 +30,13 @@ my.parse <- function(char, drop_year = TRUE) {
   if (drop_year) char <- gsub("(20[0-1][1-9])", "", char,  perl = T, ignore.case = F)
 
   return(char)
+}
+
+#' @rdname parse_qlabel
+#' @export
+my.parse <- function(char, drop_year = TRUE) {
+  .Deprecated("parse_qlabel")
+  parse_qlabel(char, drop_year = drop_year)
 }
 
 #' comma formatting to char
@@ -27,6 +50,12 @@ my.parse <- function(char, drop_year = TRUE) {
 #' @importFrom purrr walk2
 #' @export
 #'
+#' @examples
+#' # Write a formatted count to a .tex file for LaTeX inclusion
+#' cmfmtW(123456, tempfile(fileext = ".tex"))
+#'
+#' # Write a rounded percentage
+#' cmfmtW(0.6712, tempfile(fileext = ".tex"), round = 1, pp = TRUE)
 cmfmtW <- function(x, file, round = NA, pp = FALSE) {
   if (pp) x <- round(x*100, 1)
   if (!is.na(round)) x <- round(x, round)
@@ -35,49 +64,3 @@ cmfmtW <- function(x, file, round = NA, pp = FALSE) {
   purrr::walk2(x, file, ~ write_lines(.x, .y))
 }
 
-#' @rdname cmfmt
-#' @param x numeric vector
-#' @param pp if true then multiply by one hundred
-#' @export
-#'
-#' @examples
-#' cmfmt(c(123, 1234, 123456789))
-#'
-cmfmt <- function(x, file,  pp = FALSE) {
-  if (pp) x <- round(x*100, 1)
-  x <- format(x, big.mark = ",")
-  return(x)
-}
-
-clabs <- c(`109` = "109th Congress (Bush, Hastert, Frist)",
-           `110` = "110th Congress (Bush, Pelosi, Reid)",
-           `111` = "111th Congress (Obama, Pelosi, Reid)",
-           `112` = "112nd Congress (Obama, Boehner, Reid)",
-           `113` = "113rd Congress (Obama, Boehner, Reid)",
-           `114` = "114th Congress (Obama, Boehner/Ryan, McConnell)",
-           `115` = "115th Congress (Trump, Ryan, McConnell)")
-
-
-clabs.graph <- c("109\nBush\nHastert\nFrist",
-                 "110\nBush\nPelosi\nReid",
-                 "111\nObama\nPelosi\nReid",
-                 "112\nObama\nBoehner\nReid",
-                 "113\nObama\nBoehner\nReid",
-                 "114\nObama\nBoehner-Ryan\nMcConnell")
-
-
-congEra <- tibble(cong = 109:114,
-                  name = clabs.graph,
-                  start = c(2006.0, 2006.2, 2008.2, 2010.2, 2012.2, 2014.2),
-                  end   = c(2006.2, 2008.2, 2010.2, 2012.2, 2014.2, 2016.2),
-                  name.x = c(2006, 2007.2, 2009.2, 2011.2, 2013.2, 2015.2),
-                  name.y = rep(0.6, 6),
-                  type  = "",
-                  pty4  = "foo")
-
-cong.color <- c(`109` = "orangered3",
-                `110` = "royalblue3",
-                `111` = "royalblue3",
-                `112` = "purple3",
-                `113` = "purple3",
-                `114` = "orangered3")

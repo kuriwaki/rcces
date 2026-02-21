@@ -12,23 +12,19 @@ H_to_cd(x, h_to = "Congressional Districts", s_to = "States")
 
 H_to_rep(x, h_to = "House Representative", s_to = "Senator")
 }
+\arguments{
+\item{x}{A character vector of chamber codes (\code{"H"}, \code{"S"})}
+
+\item{h_to}{Label for House}
+
+\item{s_to}{Label for Senate}
+}
 \description{
 A convenience function to recode H to House (or CDs) and S to Senate
 }
 \examples{
-library(tibble)
-library(dplyr)
-library(ggplot2)
-
-
-tibble(chamber = c("H", "S")) |>
- ggplot() +
- geom_text(aes(label = chamber), x = 0.5, y = 0.5) +
- facet_wrap(~ chamber, labeller = labeller(chamber = H_to_house))
-
-tibble(chamber = c("H", "S")) |>
- ggplot() +
- geom_text(aes(label = chamber), x = 0.5, y = 0.5) +
- facet_wrap(~ chamber, labeller = labeller(chamber = H_to_cd))
+H_to_house(c("H", "S"))
+H_to_cd(c("H", "S"))
+H_to_rep(c("H", "S"))
 
 }

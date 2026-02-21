@@ -2,12 +2,9 @@
 % Please edit documentation in R/utility.R
 \name{cmfmtW}
 \alias{cmfmtW}
-\alias{cmfmt}
 \title{comma formatting to char}
 \usage{
 cmfmtW(x, file, round = NA, pp = FALSE)
-
-cmfmt(x, file, pp = FALSE)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -22,6 +19,9 @@ cmfmt(x, file, pp = FALSE)
 comma formatting to char
 }
 \examples{
-cmfmt(c(123, 1234, 123456789))
+# Write a formatted count to a .tex file for LaTeX inclusion
+cmfmtW(123456, tempfile(fileext = ".tex"))
 
+# Write a rounded percentage
+cmfmtW(0.6712, tempfile(fileext = ".tex"), round = 1, pp = TRUE)
 }

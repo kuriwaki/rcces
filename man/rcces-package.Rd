@@ -6,7 +6,7 @@
 \alias{rcces-package}
 \title{rcces: Helper Functions for CCES Representation Projects}
 \description{
-Functions to format, clean, and operationalize variables used in Shiro Kuriwaki's CCES-based representation research. Includes tools for reshaping survey responses, computing dyadic agreement between constituents and legislators, aggregating opinion to geographic units, labeling Stata variables, and writing formatted numbers for LaTeX output.
+Functions to format, clean, and operationalize variables used in Shiro Kuriwaki's CCES-based representation research. Includes replication functions for reshaping survey responses, computing dyadic agreement between constituents and legislators, aggregating opinion to geographic units, labeling Stata variables, and writing formatted numbers for LaTeX output.
 }
 \author{
 \strong{Maintainer}: Shiro Kuriwaki \email{shirokuriwaki@gmail.com}

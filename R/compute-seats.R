@@ -1,5 +1,10 @@
 #' Compute measure for seats relevant for seats-votes
-#' @param se_factor What to multiply the standard errors by after.
+#'
+#' @param tbl A data frame where each row is a geographic unit (district or state).
+#' @param pct_var Column with percent support (unquoted, default \code{pct_yes2_raw}).
+#' @param n_var Column with sample size (unquoted, default \code{n_raw}).
+#' @param group_var Column(s) to group by (unquoted, default \code{q_label}).
+#' @param se_factor What to multiply the standard errors by.
 #' @import dplyr
 #' @export
 #'

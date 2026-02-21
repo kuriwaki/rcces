@@ -13,7 +13,15 @@ prop_seats(
 )
 }
 \arguments{
-\item{se_factor}{What to multiply the standard errors by after.}
+\item{tbl}{A data frame where each row is a geographic unit (district or state).}
+
+\item{pct_var}{Column with percent support (unquoted, default \code{pct_yes2_raw}).}
+
+\item{n_var}{Column with sample size (unquoted, default \code{n_raw}).}
+
+\item{group_var}{Column(s) to group by (unquoted, default \code{q_label}).}
+
+\item{se_factor}{What to multiply the standard errors by.}
 }
 \description{
 Compute measure for seats relevant for seats-votes

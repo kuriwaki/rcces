@@ -4,7 +4,7 @@
 \alias{do_split}
 \alias{issue_split}
 \alias{question_split}
-\title{Computation underlying ques_split and issue_split}
+\title{Computation underlying \code{question_split} and \code{issue_split}}
 \usage{
 do_split(grptbl)
 
@@ -13,6 +13,8 @@ issue_split(tbl, ...)
 question_split(tbl, ...)
 }
 \arguments{
+\item{grptbl}{A grouped data frame with columns \code{response} and \code{weight}.}
+
 \item{tbl}{The dataset with the columns \code{cong}, \code{question}}
 
 \item{...}{variables to group on in addition to year and question, tidyeval variables}

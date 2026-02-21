@@ -60,10 +60,15 @@ dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response",
 }
 
 
-#' simpler version of dyad agreement, intended for long form where office is set
+#' Code threeway agreement (-1, 0, 1)
+#'
+#' Simpler version of dyad agreement, intended for long form where office is set.
+#' Returns 1 for agreement, -1 for disagreement, 0 for don't know / independent,
+#' and NA if either input is missing.
 #'
 #' @param data dataset
-#' @param var1 first variable of Y, N, DK, or D,R
+#' @param var1 first variable of Y, N, DK, or D, R
+#' @param var2 second variable of Y, N, DK, or D, R
 #'
 #'
 #' @importFrom dplyr mutate case_when pull

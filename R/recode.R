@@ -2,22 +2,15 @@
 #'
 #' A convenience function to recode H to House (or CDs) and S to Senate
 #'
+#' @param x A character vector of chamber codes (\code{"H"}, \code{"S"})
+#' @param h_to Label for House
+#' @param s_to Label for Senate
+#'
 #' @importFrom dplyr case_match
 #' @examples
-#' library(tibble)
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#'
-#' tibble(chamber = c("H", "S")) |>
-#'  ggplot() +
-#'  geom_text(aes(label = chamber), x = 0.5, y = 0.5) +
-#'  facet_wrap(~ chamber, labeller = labeller(chamber = H_to_house))
-#'
-#' tibble(chamber = c("H", "S")) |>
-#'  ggplot() +
-#'  geom_text(aes(label = chamber), x = 0.5, y = 0.5) +
-#'  facet_wrap(~ chamber, labeller = labeller(chamber = H_to_cd))
+#' H_to_house(c("H", "S"))
+#' H_to_cd(c("H", "S"))
+#' H_to_rep(c("H", "S"))
 #'
 #' @export
 H_to_house <- function(x) {

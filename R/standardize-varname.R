@@ -5,6 +5,7 @@
 #' @param df CCES data frame with multiple "perceived vote" questions. Slimmed.
 #' @param prefix character that recognizes the perceived vote question
 #'
+#' @importFrom haven as_factor
 #' @export
 #'
 #' @return   The same df but with variables renamed with suffixes.

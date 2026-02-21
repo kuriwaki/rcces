@@ -6,6 +6,7 @@
 #'
 #' @import dplyr
 #' @importFrom data.table melt as.data.table
+#' @importFrom haven as_factor
 #'
 melt_cces <- function(tbl, q_expr){
 

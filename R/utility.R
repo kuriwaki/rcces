@@ -1,10 +1,14 @@
 
-#' Parse no-space labels to cleaner words for graphing
+#' Parse compact question labels to readable words for graphing
+#'
+#' Inserts spaces into camelCase question/issue labels and optionally
+#' strips year suffixes, e.g. \code{"gunControl2012"} becomes \code{"gun Control"}.
 #'
 #' @param char text to parse
+#' @param drop_year If \code{TRUE} (default), remove four-digit year strings
 #'
 #' @export
-my.parse <- function(char, drop_year = TRUE) {
+parse_qlabel <- function(char, drop_year = TRUE) {
   pattern <- "([a-z])([A-X2])"
   replacement <- "\\1 \\2"
 
@@ -14,6 +18,13 @@ my.parse <- function(char, drop_year = TRUE) {
   if (drop_year) char <- gsub("(20[0-1][1-9])", "", char,  perl = T, ignore.case = F)
 
   return(char)
+}
+
+#' @rdname parse_qlabel
+#' @export
+my.parse <- function(char, drop_year = TRUE) {
+  .Deprecated("parse_qlabel")
+  parse_qlabel(char, drop_year = drop_year)
 }
 
 #' comma formatting to char

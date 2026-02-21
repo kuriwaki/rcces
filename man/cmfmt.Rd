@@ -18,3 +18,10 @@ cmfmtW(x, file, round = NA, pp = FALSE)
 \description{
 comma formatting to char
 }
+\examples{
+# Write a formatted count to a .tex file for LaTeX inclusion
+cmfmtW(123456, tempfile(fileext = ".tex"))
+
+# Write a rounded percentage
+cmfmtW(0.6712, tempfile(fileext = ".tex"), round = 1, pp = TRUE)
+}

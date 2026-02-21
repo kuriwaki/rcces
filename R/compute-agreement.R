@@ -13,9 +13,20 @@
 #'
 #' @importFrom dplyr mutate case_when pull as_tibble
 #' @importFrom magrittr `%>%`
+#' @importFrom glue glue
 #'
 #'@export
 #'
+#' @examples
+#' library(tibble)
+#' df <- tibble(
+#'   year = 2016, case_id = 1:4, qID = "CC16_350a",
+#'   response     = c("Y", "N", "Y", "DK"),
+#'   vote         = c("Y", "Y", "N", "N"),
+#'   vote_held_H  = c(1, 1, 1, 1),
+#'   rep_icpsr    = 1001:1004
+#' )
+#' dyad_agrmt(df, chamber = "H")
 dyad_agrmt <- function(tbl, chamber, agrmt_name = "agrmt", svy_var = "response", policy_var = "vote") {
 
   if (!chamber %in% c("H", "S", "Policy")) stop("Must be H or S")

@@ -2,12 +2,24 @@
 #' Parse compact question labels to readable words for graphing
 #'
 #' Inserts spaces into camelCase question/issue labels and optionally
-#' strips year suffixes, e.g. \code{"gunControl2012"} becomes \code{"gun Control"}.
+#' strips year suffixes, e.g. \code{"CapAndTrade"} becomes \code{"Cap And Trade"}.
 #'
 #' @param char text to parse
 #' @param drop_year If \code{TRUE} (default), remove four-digit year strings
 #'
 #' @export
+#' @examples
+#' # Real CCES question labels (camelCase from the question-vote key)
+#' parse_qlabel(c("BanAssaultRifle2013", "RepealACA2017", "CapAndTrade"))
+#' # [1] "Ban Assault Rifle " "Repeal ACA "  "Cap And Trade"
+#'
+#' # Keep year suffixes
+#' parse_qlabel(c("GunBackgroundCheck2018", "RaiseMinimumWage2016"), drop_year = FALSE)
+#' # [1] "Gun Background Check 2018" "Raise Minimum Wage 2016"
+#'
+#' # Handles acronyms and special cases
+#' parse_qlabel(c("SCHIP2009", "PPACA", "DoddFrank"), drop_year = FALSE)
+#' # [1] "SCHIP 2009" "PPACA" "Dodd Frank"
 parse_qlabel <- function(char, drop_year = TRUE) {
   pattern <- "([a-z])([A-X2])"
   replacement <- "\\1 \\2"
@@ -38,6 +50,12 @@ my.parse <- function(char, drop_year = TRUE) {
 #' @importFrom purrr walk2
 #' @export
 #'
+#' @examples
+#' # Write a formatted count to a .tex file for LaTeX inclusion
+#' cmfmtW(123456, tempfile(fileext = ".tex"))
+#'
+#' # Write a rounded percentage
+#' cmfmtW(0.6712, tempfile(fileext = ".tex"), round = 1, pp = TRUE)
 cmfmtW <- function(x, file, round = NA, pp = FALSE) {
   if (pp) x <- round(x*100, 1)
   if (!is.na(round)) x <- round(x, round)

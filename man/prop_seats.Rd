@@ -18,3 +18,13 @@ prop_seats(
 \description{
 Compute measure for seats relevant for seats-votes
 }
+\examples{
+library(tibble)
+dist_opinion <- tibble(
+  q_label      = rep(c("Gun Background Check 2018", "Repeal ACA 2017"), each = 5),
+  pct_yes2_raw = c(0.55, 0.48, 0.62, 0.51, 0.44,
+                   0.70, 0.65, 0.58, 0.72, 0.61),
+  n_raw        = rep(200, 10)
+)
+prop_seats(dist_opinion)
+}

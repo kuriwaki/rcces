@@ -5,8 +5,9 @@ Authors@R: person("Shiro", "Kuriwaki", email = "shirokuriwaki@gmail.com", role =
 Description: Utility functions for analyzing and reshaping CCES dta files. 
   This packageis not meant for production. For better documented standard 
   functions see `kuriwaki/ccesMRPprep`, `kuriwaki/ccesMRPrun`, and `kuriwaki/cces_cumulative`.
-Imports: 
+Imports:
   dplyr,
+  glue,
   purrr,
   tibble,
   stringr,

@@ -16,5 +16,18 @@ my.parse(char, drop_year = TRUE)
 }
 \description{
 Inserts spaces into camelCase question/issue labels and optionally
-strips year suffixes, e.g. \code{"gunControl2012"} becomes \code{"gun Control"}.
+strips year suffixes, e.g. \code{"CapAndTrade"} becomes \code{"Cap And Trade"}.
+}
+\examples{
+# Real CCES question labels (camelCase from the question-vote key)
+parse_qlabel(c("BanAssaultRifle2013", "RepealACA2017", "CapAndTrade"))
+# [1] "Ban Assault Rifle " "Repeal ACA "  "Cap And Trade"
+
+# Keep year suffixes
+parse_qlabel(c("GunBackgroundCheck2018", "RaiseMinimumWage2016"), drop_year = FALSE)
+# [1] "Gun Background Check 2018" "Raise Minimum Wage 2016"
+
+# Handles acronyms and special cases
+parse_qlabel(c("SCHIP2009", "PPACA", "DoddFrank"), drop_year = FALSE)
+# [1] "SCHIP 2009" "PPACA" "Dodd Frank"
 }

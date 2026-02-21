@@ -2,12 +2,9 @@
 % Please edit documentation in R/utility.R
 \name{cmfmtW}
 \alias{cmfmtW}
-\alias{cmfmt}
 \title{comma formatting to char}
 \usage{
 cmfmtW(x, file, round = NA, pp = FALSE)
-
-cmfmt(x, file, pp = FALSE)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -20,8 +17,4 @@ cmfmt(x, file, pp = FALSE)
 }
 \description{
 comma formatting to char
-}
-\examples{
-cmfmt(c(123, 1234, 123456789))
-
 }

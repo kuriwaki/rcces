@@ -4,9 +4,9 @@
 \name{rcces-package}
 \alias{rcces}
 \alias{rcces-package}
-\title{rcces: Tools to Melt, Combine, Clean, and Standardize CCES Questions}
+\title{rcces: Helper Functions for CCES Representation Projects}
 \description{
-Utility functions for analyzing and reshaping CCES dta files. This package is not meant for production. For better documented standard functions see `kuriwaki/ccesMRPprep`, `kuriwaki/ccesMRPrun`, and `kuriwaki/cces_cumulative`.
+Functions to format, clean, and operationalize variables used in Shiro Kuriwaki's CCES-based representation research. Includes tools for reshaping survey responses, computing dyadic agreement between constituents and legislators, aggregating opinion to geographic units, labeling Stata variables, and writing formatted numbers for LaTeX output.
 }
 \author{
 \strong{Maintainer}: Shiro Kuriwaki \email{shirokuriwaki@gmail.com}

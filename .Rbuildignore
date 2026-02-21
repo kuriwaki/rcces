@@ -3,5 +3,6 @@
 R/archive
 ^README.md$
 test.dta
+^data-raw$
 ^\.claude$
 ^LICENSE\.md$

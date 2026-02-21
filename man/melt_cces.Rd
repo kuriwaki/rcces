@@ -2,15 +2,35 @@
 % Please edit documentation in R/melt-cces.R
 \name{melt_cces}
 \alias{melt_cces}
-\title{melt wide cces (raw versions) to correct var names}
+\alias{melt_cces_tidy}
+\title{Melt wide CCES data to long format}
 \usage{
 melt_cces(tbl, q_expr)
+
+melt_cces_tidy(tbl, q_expr)
 }
 \arguments{
-\item{tbl}{CCES dataset}
+\item{tbl}{CCES dataset (wide format, typically from [haven::read_dta()])}
 
-\item{q_expr}{regex that selects questions}
+\item{q_expr}{Regex that selects the question columns to melt}
+}
+\value{
+A long data frame with columns `case_id`, `year`, `question`, and `response`.
 }
 \description{
-melt wide cces (raw versions) to correct var names
+Reshapes wide CCES data (one column per question) into long format
+(one row per respondent-question), converting haven-labelled values
+to character strings in the process.
+}
+\details{
+`melt_cces()` uses `data.table::melt()` and is superseded by
+`melt_cces_tidy()`, which uses `tidyr::pivot_longer()` instead.
+}
+\examples{
+# Melt roll call vote questions from the 2014 CCES sample
+melt_cces_tidy(cces14_sample, "CC14_325")
+
+# Melt gun control questions
+melt_cces_tidy(cces14_sample, "CC14_320")
+
 }

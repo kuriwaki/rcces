@@ -1,10 +1,12 @@
 Package: rcces
 Version: 0.2.0
-Title: Tools to Melt, Combine, Clean, and Standardize CCES Questions
+Title: Helper Functions for CCES Representation Projects
 Authors@R: person("Shiro", "Kuriwaki", email = "shirokuriwaki@gmail.com", role = c("aut", "cre"))
-Description: Utility functions for analyzing and reshaping CCES dta files.
-  This package is not meant for production. For better documented standard
-  functions see `kuriwaki/ccesMRPprep`, `kuriwaki/ccesMRPrun`, and `kuriwaki/cces_cumulative`.
+Description: Functions to format, clean, and operationalize variables used in
+  Shiro Kuriwaki's CCES-based representation research. Includes tools for
+  reshaping survey responses, computing dyadic agreement between constituents
+  and legislators, aggregating opinion to geographic units, labeling Stata
+  variables, and writing formatted numbers for LaTeX output.
 Imports:
   dplyr,
   glue,

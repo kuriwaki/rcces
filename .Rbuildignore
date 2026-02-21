@@ -1,7 +1,6 @@
 ^rcces\.Rproj$
 ^\.Rproj\.user$
 R/archive
-^README.Rmd$
 ^README.md$
 test.dta
 ^\.claude$

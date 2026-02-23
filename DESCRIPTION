@@ -1,5 +1,5 @@
 Package: rcces
-Version: 1.0.0
+Version: 1.0.1
 Title: Helper Functions for CCES Representation Projects
 Authors@R: person("Shiro", "Kuriwaki", email = "shirokuriwaki@gmail.com", role = c("aut", "cre"))
 Description: Functions to format, clean, and operationalize variables used in
